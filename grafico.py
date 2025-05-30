@@ -26,3 +26,9 @@ try:
     
     st.pyplot(fig)
 
+except FileNotFoundError:
+    st.error("Arquivo 'social_media_vs_productivity.csv' não encontrado. Por favor, faça o upload do arquivo.")
+except Exception as e:
+    st.error(f"Ocorreu um erro ao processar os dados: {e}")
+
+
