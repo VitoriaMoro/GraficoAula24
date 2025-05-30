@@ -5,15 +5,12 @@ import seaborn as sns
 
 st.title('Análise: Redes Sociais vs. Produtividade')
 
-# Carregar o arquivo CSV (pode adicionar um uploader de arquivos do Streamlit aqui também)
 try:
     df = pd.read_csv("social_media_vs_productivity.csv")
 
-    # Definir as colunas para o eixo x e y
     x_column = 'daily_social_media_time'
     y_column = 'actual_productivity_score'
 
-    # Remover linhas onde os valores nas colunas relevantes estão ausentes
     df_cleaned = df.dropna(subset=[x_column, y_column])
 
     st.write(f"Visualizando a relação entre '{x_column}' e '{y_column}'.")
@@ -27,10 +24,5 @@ try:
     ax.set_ylabel('Pontuação de Produtividade Real', fontsize=12)
     ax.grid(True, linestyle='--', alpha=0.7)
     
-    # Exibir o gráfico no Streamlit
     st.pyplot(fig)
 
-except FileNotFoundError:
-    st.error("Arquivo 'social_media_vs_productivity.csv' não encontrado. Por favor, faça o upload do arquivo.")
-except Exception as e:
-    st.error(f"Ocorreu um erro ao processar os dados: {e}")
